@@ -6,6 +6,7 @@ function App() {
   const [blogs, setBlogs]=useState([]);
   const [pageNum, setPageNum]=useState(1);
   const [loadingBlogs, setLoadingBlogs]=useState(true);
+  const [totalPages, setTotalPages]=useState(20); //value of total pages
 
   //create an observer ref with IntersectionObserver
   const observer = useRef(
@@ -31,6 +32,7 @@ function App() {
     const result=await fetch(`https://api.theinnerhour.com/v1/blogposts?page=${pageNum}&limit=9`);
     const data = await result.json();
     setBlogs(prevBlogs=>[...prevBlogs,...data.list]);
+    setTotalPages(data.meta.total);
     setLoadingBlogs(false);
   }
 
@@ -41,8 +43,11 @@ function App() {
 
   //call fetchBlogs function when current page number state is updated
   useEffect(()=>{
+    //checks if current page number is greater than total pages
+    if(pageNum>totalPages) return;
+    //else calls api for next page
     fetchBlogs(pageNum);
-  },[pageNum]);
+  },[pageNum,totalPages]);
 
   //observe and unobserve according to current page end
   useEffect(() => {
