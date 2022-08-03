@@ -1,38 +1,52 @@
 .App {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App::-webkit-scrollbar {
+  display: none;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.blog-list{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 70%;
+  width: 95%;
+  margin: auto;
+  gap: 5px;
+  justify-content: center;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.blog-list::-webkit-scrollbar {
+  width: none !important;
+  display: none;
+}
+.blog-card{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 20px;
+  gap: 10px;
+  border-radius: 10px;
+  width: 330px;
+  min-height: fit-content;
 }
-
-.App-link {
-  color: #61dafb;
+.blog-card:hover{
+  cursor: pointer;
+  background-color: rgb(239, 235, 235);
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.blog-cover{
+  width: 100%;
+  height: 90%;
+}
+.blog-cover img{
+  object-fit: cover;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+}
+.blog-title{
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: left;
+}
+.loading-div{
+  height: 50px;
+  margin-bottom: 10px;
 }
